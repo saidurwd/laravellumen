@@ -13,14 +13,6 @@
 |
 */
 
-//$router->get('/', function () use ($router) {
-//    return $router->app->version();
-//});
-
-$router->get('/home/index', 'HomeController@Index');
-
-$router->get('user/{id}', 'UserController@show');
-
 $router->get('/', function () use ($router) {
-    return 'Hello Bangladesh!';
+    return $router->app->version();
 });
