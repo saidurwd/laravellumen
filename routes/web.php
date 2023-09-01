@@ -19,6 +19,9 @@ $router->get('/', function () use ($router) {
 
 $router->get('home/index', 'HomeController@Index');
 
-
-
-
+$router->group(['prefix' => 'api/v1'], function () use ($router) {
+    $router->get('country', 'CountryController@Index');
+    $router->post('country', 'CountryController@createCountry');
+    $router->put('country/{id}', 'CountryController@updateCountry');
+    $router->delete('country/{id}', 'CountryController@deleteCountry');
+});
