@@ -12,6 +12,22 @@ MySQL - 10.4.28-MariaDB : Database - laravellumen
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `migrations` */
+
+DROP TABLE IF EXISTS `migrations`;
+
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `migrations` */
+
+insert  into `migrations`(`id`,`migration`,`batch`) values 
+(1,'2023_09_01_225114_create_users_table',1);
+
 /*Table structure for table `os_acl` */
 
 DROP TABLE IF EXISTS `os_acl`;
@@ -1842,12 +1858,11 @@ CREATE TABLE `os_country` (
   PRIMARY KEY (`id`),
   KEY `idx_country_3_code` (`country_3_code`),
   KEY `idx_country_2_code` (`country_2_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=249 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Country records';
+) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Country records';
 
 /*Data for the table `os_country` */
 
 insert  into `os_country`(`id`,`title`,`country_2_code`,`country_3_code`,`status`) values 
-(1,'Afghanistan','AF','AFG','Active'),
 (2,'Albania','AL','ALB','Active'),
 (3,'Algeria','DZ','DZA','Active'),
 (4,'American Samoa','AS','ASM','Active'),
@@ -2092,7 +2107,8 @@ insert  into `os_country`(`id`,`title`,`country_2_code`,`country_3_code`,`status
 (245,'Serbia','RS','SRB','Active'),
 (246,'Sint Maarten (French Antilles)','MF','MAF','Active'),
 (247,'Sint Maarten (Netherlands Antilles)','SX','SXM','Active'),
-(248,'Palestinian Territory, occupied','PS','PSE','Active');
+(248,'Palestinian Territory, occupied','PS','PSE','Active'),
+(249,'Test 1','TE','TES','Active');
 
 /*Table structure for table `os_customer` */
 
@@ -10263,6 +10279,27 @@ insert  into `os_yiisession`(`id`,`expire`,`data`,`userId`) values
 ('fd1e8f236acef26d048b425f72d53e05',1689533183,'0b6eb78841f14f2472c9e33639e4de63__returnUrl|s:1:\"/\";',NULL),
 ('fdb34242803b8f4cac075172ca1c6ec0',1687558587,'0b6eb78841f14f2472c9e33639e4de63__returnUrl|s:1:\"/\";',NULL),
 ('nsui6avo962j5vt4npaeh06nsl',1687543323,'81ce7f5ab25c93b74b28e31e6e006e40__returnUrl|s:33:\"/optimopos/index.php?r=site/index\";',NULL);
+
+/*Table structure for table `users` */
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `users` */
+
+insert  into `users`(`id`,`name`,`email`,`password`,`remember_token`,`created_at`,`updated_at`) values 
+(1,'Saidur Rahman','info@saidur-rahman.com','$2y$10$1cJu0.TZ1nilL4fANvYTaeQL2snnAqmZgpW63fvSoyvs9.NduOvje',NULL,'2023-09-02 04:58:12','2023-09-02 04:58:12');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

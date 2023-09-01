@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LumenAuthController;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -30,4 +32,16 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('customer', 'CustomerController@createCustomer');
     $router->put('customer/{id}', 'CustomerController@updateCustomer');
     $router->delete('customer/{id}', 'CustomerController@deleteCustomer');
+    //User Auth
+    $router->post('login', 'LumenAuthController@login');
+    $router->post('logout', 'LumenAuthController@logout');
+    $router->post('refresh', 'LumenAuthController@refresh');
+    $router->post('me', 'LumenAuthController@me');
 });
+
+// $router->group(['prefix' => 'api'], function () use ($router) {
+//     $router->post('login', 'LumenAuthController@login');
+//     $router->post('logout', 'LumenAuthController@logout');
+//     $router->post('refresh', 'LumenAuthController@refresh');
+//     $router->post('me', 'LumenAuthController@me');
+// });
