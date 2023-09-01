@@ -20,8 +20,14 @@ $router->get('/', function () use ($router) {
 $router->get('home/index', 'HomeController@Index');
 
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
+    //Country
     $router->get('country', 'CountryController@Index');
     $router->post('country', 'CountryController@createCountry');
     $router->put('country/{id}', 'CountryController@updateCountry');
     $router->delete('country/{id}', 'CountryController@deleteCountry');
+    //Customer
+    $router->get('customer', 'CustomerController@Index');
+    $router->post('customer', 'CustomerController@createCustomer');
+    $router->put('customer/{id}', 'CustomerController@updateCustomer');
+    $router->delete('customer/{id}', 'CustomerController@deleteCustomer');
 });
